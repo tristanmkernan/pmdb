@@ -113,7 +113,7 @@ class MemeContentView(DetailView):
     slug_url_kwarg = "uuid"
 
     def get_queryset(self):
-        return get_objects_for_user(self.request.user, "memedb.delete_meme").defer()
+        return get_objects_for_user(self.request.user, "memedb.view_meme").defer()
 
     def get(self, request, *args, **kwargs):
         obj = self.get_object()

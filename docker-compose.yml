@@ -1,0 +1,11 @@
+version: "3.9"
+   
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - SETTINGS_MODULE=something
+    volumes:
+      - ./db.sqlite3:/code/db.sqlite3
