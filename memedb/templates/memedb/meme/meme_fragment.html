@@ -1,0 +1,22 @@
+{% load base64 %}
+
+<div class="card">
+    <img src="{% url 'meme_content' object.uuid %}" class="card-img" alt="A really good meme">
+    <div class="card-img-overlay d-flex flex-column gap-2 align-items-start justify-content-between">
+        <div class="d-flex flex-wrap gap-1">
+            {% for tag in object.tags.names %}
+            <span class="badge rounded-pill bg-secondary">{{ tag }}</span>
+            {% endfor %}
+        </div>
+        <div class="d-flex gap-1">
+            {% if not hide_actions %}
+            <a href="{% url 'meme_update' object.uuid %}" class="btn btn-secondary btn-sm">
+                <i class="bi-pencil"></i>
+            </a>
+            <a href="{% url 'meme_delete' object.uuid %}" class="btn btn-danger btn-sm">
+                <i class="bi-trash"></i>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>

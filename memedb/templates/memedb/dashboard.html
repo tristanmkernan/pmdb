@@ -1,0 +1,25 @@
+{% extends "memedb/skeleton.html" %}
+
+{% block title %}Dashboard | memedb{% endblock %}
+
+{% block body %}
+<main>
+    <div class="container my-4 d-flex flex-column gap-4">
+        <div class="d-flex flex-row gap-2 align-items-center flex-wrap">
+            <a class="btn btn-primary" href="{% url 'meme_create' %}">Add Meme</a>
+
+            <form class="flex-grow-1">
+                <div class="input-group" style="max-width: 30rem;">
+                    <input type="text" name="q" class="form-control" placeholder="Tags (comma separated)"
+                        value="{{ request.GET.q }}">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="row" data-masonry='{"percentPosition": true }'>
+            {% include "memedb/meme_list_fragment.html" with object_list=object_list %}
+        </div>
+    </div>
+</main>
+{% endblock %}

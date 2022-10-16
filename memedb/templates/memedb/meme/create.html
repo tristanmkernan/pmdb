@@ -1,0 +1,16 @@
+{% extends "memedb/skeleton.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Add Meme | memedb{% endblock %}
+{% block body %}
+
+<main>
+    <div class="container py-2">
+        <h1>Add Meme</h1>
+
+        {% crispy form %}
+    </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "memedb/skeleton.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Delete Meme | memedb{% endblock %}
+{% block body %}
+
+<main>
+    <div class="container py-2">
+        <h1>Delete Meme</h1>
+
+        <div class="my-4">
+            {% include "memedb/meme/meme_fragment.html" with object=object hide_actions=True %}
+        </div>
+
+        {% crispy form %}
+    </div>
+</main>
+
+{% endblock %}
