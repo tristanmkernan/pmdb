@@ -6,6 +6,9 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /code
 
 RUN apk add libmagic
+RUN apk add jpeg-dev zlib-dev
+RUN apk add --no-cache --virtual .build-deps build-base linux-headers
+RUN apk add libffi-dev
 
 COPY requirements.txt /code/
 
