@@ -9,6 +9,7 @@ RUN apk add libmagic
 RUN apk add jpeg-dev zlib-dev
 RUN apk add --no-cache --virtual .build-deps build-base linux-headers
 RUN apk add libffi-dev
+RUN apk add gfortran openblas-dev
 
 COPY requirements.txt /code/
 
