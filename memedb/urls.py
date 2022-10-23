@@ -12,6 +12,11 @@ urlpatterns = [
     ),
     path("dashboard/meme/create", views.MemeCreateView.as_view(), name="meme_create"),
     path(
+        "dashboard/meme/create/fragment/suggested-tags",
+        views.MemeCreateSuggestedTagsView.as_view(),
+        name="meme_create_suggested_tags",
+    ),
+    path(
         "dashboard/meme/<uuid:uuid>/update",
         views.MemeUpdateView.as_view(),
         name="meme_update",

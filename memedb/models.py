@@ -4,6 +4,7 @@ from django.db import models
 from taggit.managers import TaggableManager
 
 from authy.models import User
+from memedb.utils import is_image_content_type
 
 
 class MemeManager(models.Manager):
@@ -20,10 +21,15 @@ class Meme(models.Model):
 
     content = models.BinaryField()
     content_type = models.CharField(max_length=16)
+    comparison_hash = models.CharField(max_length=2048, blank=True, null=True)
 
     tags = TaggableManager()
 
     created_at = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def is_image(self):
+        return is_image_content_type(self.content_type)
 
     def __str__(self) -> str:
         return f"Meme {self.uuid}"

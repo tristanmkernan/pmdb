@@ -1,0 +1,10 @@
+{% if tags %}
+<div id="suggested-tags">
+    <p class="text-muted mb-2">Suggested tags</p>
+    <div class="d-flex flex-wrap gap-1">
+        {% for tag in tags %}
+        <span class="badge rounded-pill bg-secondary">{{ tag }}</span>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
