@@ -1,15 +1,18 @@
-FROM python:3.10-alpine
+FROM python:3.10-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 WORKDIR /code
 
-RUN apk add libmagic
-RUN apk add jpeg-dev zlib-dev
-RUN apk add --no-cache --virtual .build-deps build-base linux-headers
-RUN apk add libffi-dev
-RUN apk add gfortran openblas-dev
+RUN apt-get update
+RUN apt-get install -y \
+    libmagic-dev \
+    libjpeg-dev \
+    zlib1g-dev \
+    libffi-dev \
+    gfortran \
+    libopenblas-dev
 
 COPY requirements.txt /code/
 
