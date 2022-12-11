@@ -17,9 +17,39 @@
             </form>
         </div>
 
-        <div class="row" data-masonry='{"percentPosition": true }'>
+        <div class="row">
             {% include "memedb/meme_list_fragment.html" with object_list=object_list %}
         </div>
     </div>
 </main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // thanks to https://stackoverflow.com/a/54844898
+    document.body.addEventListener('click', async function (event) {
+
+        // implements event delegation for dynamic elements
+        // thanks to https://stackoverflow.com/a/25248515
+        document.addEventListener("click", async function (e) {
+            for (var target = e.target; target && target != this; target = target.parentNode) {
+                // loop parent nodes from the target to the delegation node
+                if (target.classList.contains('copy-image-to-clipboard-action')) {
+
+                    let imageUrl = target.dataset["imageUrl"];
+                    let response = await fetch(imageUrl);
+                    let blob = await response.blob();
+
+                    await navigator.clipboard.write([
+                        new ClipboardItem({
+                            [blob.type]: blob
+                        })
+                    ]);
+
+                    break;
+                }
+            }
+        }, false);
+    }, false);
+</script>
 {% endblock %}

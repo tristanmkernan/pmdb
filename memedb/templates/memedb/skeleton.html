@@ -27,11 +27,11 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
   </script>
 
-  {% comment %} <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script> {% endcomment %}
-
   <script src="https://unpkg.com/htmx.org@1.8.2"></script>
   {% django_htmx_script %}
 
+  {% block scripts %}
+  {% endblock %}
 </body>
 
 </html>

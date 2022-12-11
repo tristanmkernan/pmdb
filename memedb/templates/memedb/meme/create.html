@@ -14,5 +14,27 @@
         <div id="suggested-tags"></div>
     </div>
 </main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Support pasting an image from clipboard
+
+    document.addEventListener("paste", function (event) {
+        let $fileEl = document.getElementById('id_content_');
+
+        let file = event.clipboardData.files[0];
+
+        if (file) {
+            let container = new DataTransfer();
+
+            container.items.add(file);
+
+            $fileEl.files = container.files;
+
+            $fileEl.dispatchEvent(new CustomEvent("change"));
+        }
+    })
+</script>
 
 {% endblock %}
